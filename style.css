@@ -1197,6 +1197,25 @@ body {
     align-items: flex-start;
     margin-bottom: var(--space-24);
 }
+.language-switcher {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  display: flex;
+  gap: 8px;
+  padding: 0 10px;
+  max-width: 120px; /* или подходящее значение */
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  .language-switcher {
+    max-width: 100%;
+    right: 0;
+    padding: 0 5px;
+  }
+}
 
 .principle-icon {
     width: 80px;
@@ -1479,6 +1498,14 @@ body {
     margin-bottom: var(--space-8);
     color: rgb(255, 255, 255);
 }
+.language-switcher button img {
+  transition: transform 0.3s ease;
+}
+
+.language-switcher button:hover img {
+  transform: scale(1.2);
+}
+
 
 .link-description {
     color: var(--color-text-secondary);

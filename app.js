@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create connection lines between particles
         createParticleConnections(container);
     }
-    
+
     function createAdvancedParticle(container, index) {
         const particle = document.createElement('div');
         particle.className = 'advanced-particle';
