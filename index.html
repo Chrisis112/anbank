@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,14 +19,7 @@
 
 <body>
     <!-- Language switcher -->
-    <div class="language-switcher" style="position: fixed; top: 10px; right: 10px; z-index: 1000; display: flex; gap: 8px;">
-  <button onclick="changeLanguage('ru')" aria-label="Русский язык" style="background:none; border:none; cursor:pointer; padding:0;">
-    <img src="flags/ru.svg" alt="RU" style="width:24px; height:24px;" />
-  </button>
-  <button onclick="changeLanguage('en')" aria-label="English language" style="background:none; border:none; cursor:pointer; padding:0;">
-    <img src="flags/en.svg" alt="EN" style="width:24px; height:24px;" />
-  </button>
-</div>
+
 
 
     <!-- Animated Background -->
@@ -271,38 +264,39 @@
     </footer>
 
     <script src="app.js"></script>
-    <script>
-      i18next
-        .use(i18nextHttpBackend)
-        .use(i18nextBrowserLanguageDetector)
-        .init({
-          fallbackLng: 'ru',
-          debug: false,
-          backend: {
-            loadPath: './locales/{{lng}}.json',
-          },
-          detection: {
-            order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag'],
-            caches: ['localStorage', 'cookie'],
-          },
-          initImmediate: false
-        }, function (err, t) {
-          updateContent();
-        });
+<script>
+  i18next
+    .use(i18nextHttpBackend)
+    .use(i18nextBrowserLanguageDetector)
+    .init({
+      fallbackLng: 'en', // Сделали английский языком по умолчанию
+      debug: false,
+      backend: {
+        loadPath: './locales/{{lng}}.json',
+      },
+      detection: {
+        order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag'],
+        caches: ['localStorage', 'cookie'],
+      },
+      initImmediate: false
+    }, function (err, t) {
+      updateContent();
+    });
 
-      function updateContent() {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
-          el.innerText = i18next.t(key);
-        });
-      }
+  function updateContent() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      el.innerText = i18next.t(key);
+    });
+  }
 
-      function changeLanguage(lng) {
-        i18next.changeLanguage(lng, () => {
-          updateContent();
-        });
-      }
-    </script>
+  function changeLanguage(lng) {
+    i18next.changeLanguage(lng, () => {
+      updateContent();
+    });
+  }
+</script>
+
 </body>
 </html>
 
